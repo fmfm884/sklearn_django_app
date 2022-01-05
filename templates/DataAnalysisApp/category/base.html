@@ -1,0 +1,109 @@
+{% extends 'DataAnalysisApp/dashboard_base.html' %} {% load static %} {% block content %}
+<div class="container-fluid px-4">
+  <h1 class="mt-4">{% block algorithm %}{% endblock %}</h1>
+  <ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">
+      <p>
+      {% block overview %}
+      {% endblock %}
+      </p>
+    </li>
+  </ol>
+  <div class="row">
+    <div class="col-sm">
+      {% if form %}
+      <form id="form" method="POST" action="">
+        {% csrf_token %} {% for field in form %}
+        <p>
+          {% if field.help_text %}
+            {% if 'msg:' in field.help_text %}
+            <!--span class="badge rounded-pill bg-secondary">{{ field.help_text }}</！span-->
+            <div class="bd-callout bd-callout-info">
+              <p>入力例: {'param': ['val', 'val']}</p>
+            </div>
+            {% else %}
+            <span class="badge rounded-pill bg-primary">{{ field.help_text }}</span>
+            {% endif %}
+          {% endif %}
+          <table>{{ field.label }} {{ field }}</table>
+          {% if field.errors %}
+          <div class="alert alert-danger d-flex" role="alert">
+            {{ field.errors }}
+          </div>
+          {% endif %}
+        </p>
+        {% endfor %}
+        {% for error in form.non_field_errors %}
+          <div class="alert alert-danger d-flex" role="alert">
+            {{ error }}
+          </div>
+        {% endfor %}
+        {% if err_msg %}
+        <div class="alert alert-danger" role="alert">
+          {{ err_msg }}
+        </div>
+        {% endif %}
+        <button id="btnRun" class="btn btn-primary" type="button">
+          <span id="btnSpinner" class="" role="status" aria-hidden="true"></span>
+          <span id="btnLoad" class="">実行</span>
+        </button>
+      </form>
+      {% endif %}
+    </div>
+    {% if dataframe %}
+    <p>
+    <div class="col-sm w-100">{{ dataframe | safe }}</div>
+    </p>
+    {% endif %}
+    {% if corr_heat_jpg_path %}
+    <p>
+      <div class="col-sm w-100">
+        <img class="img-fluid" src="{% static corr_heat_jpg_path %}" alt="corr_heat_matrix">
+      </div>
+    </p>
+    {% endif %}
+    {% if img_data_jpg_path %}
+    <p>
+      <div class="col-sm w-100">
+        <img class="img-fluid" src="{% static img_data_jpg_path %}" alt="img_data">
+      </div>
+    </p>
+    {% endif %}
+    {% if dataset_msg and df_dataset %}
+    <p>
+    <div class="w-100">{{ dataset_msg }}</div>
+    <div class="col-sm w-100">{{ df_dataset | safe }}</div>
+    </p>
+    {% endif %}
+    <!--Tuning-->
+    {% if df_tuning %}
+    <p>
+      <div class="col-sm w-100">{{ df_tuning | safe }}</div>
+      </p>
+    {% endif %}
+    <!--classification-->
+    {% if confusion_jpg_path%}
+    <p>
+    <div class="col-sm w-100"><img class="img-fluid" src="{% static confusion_jpg_path %}" alt="confusion_matrix"></div>
+    </p>
+    {% endif %}
+    {% if clf_report %}
+    <p>
+    <div class="col-sm w-100">{{ clf_report | safe }}</div>
+    </p>
+    {% endif %}
+    <!--regression-->
+    {% if reg_report %}
+    <p>
+      <div class="col-sm w-100">{{ reg_report | safe }}</div>
+    </p>
+    {% endif %}
+    <!--DimensionalityReduction & clustering-->
+    {% if data_jpg_path %}
+    <p>
+    <div class="col-sm w-100"><img class="img-fluid" src="{% static data_jpg_path %}" alt="data"></div>
+    </p>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}
