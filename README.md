@@ -1,0 +1,2 @@
+# sklearn_django_app
+sklearnのアルゴリズムを検証するアプリ
