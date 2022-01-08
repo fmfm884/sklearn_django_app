@@ -6,6 +6,11 @@ sklearnのアルゴリズムを検証するアプリ
 conda env create -n 新たな環境名 -f env.yml
 ```
 
+### Prepare Django_Secret_Key
+```
+python sklearn_django_app/get_random_secret_key.py
+```
+
 ### Run Web Server 
 ```
 python manage.py runserver
