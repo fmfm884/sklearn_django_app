@@ -16,4 +16,4 @@ python sklearn_django_app/get_random_secret_key.py
 python manage.py runserver
 ```
 
-<http://localhost:8000/home/>にアクセスすると利用できます。
+[こちら](http://localhost:8000/home/){:target="_blank"}にアクセスすると利用できます。
