@@ -266,6 +266,8 @@ class SGDRegressorView(FormView):
             'dataset_msg': '上5行を抜粋したデータセットを確認',
             'df_dataset': df_dataset[:5].to_html(classes='table', index=False, justify='left'),
             'reg_report': eval.reg_report(obj_var).T.to_html(classes='table', justify='left'),
+            'true_pred_jpg_path': eval.plot_true_pred(MEDIA_BASE_JPG_PATH).split(os.sep, maxsplit=1)[-1],
+            'residual_error_jpg_path': eval.plot_residual_error(MEDIA_BASE_JPG_PATH).split(os.sep, maxsplit=1)[-1],
         })
         return self.render_to_response(ctxt)
 
@@ -310,6 +312,8 @@ class ElasticNetView(FormView):
             'dataset_msg': '上5行を抜粋したデータセットを確認',
             'df_dataset': df_dataset[:5].to_html(classes='table', index=False, justify='left'),
             'reg_report': eval.reg_report(obj_var).T.to_html(classes='table', justify='left'),
+            'true_pred_jpg_path': eval.plot_true_pred(MEDIA_BASE_JPG_PATH).split(os.sep, maxsplit=1)[-1],
+            'residual_error_jpg_path': eval.plot_residual_error(MEDIA_BASE_JPG_PATH).split(os.sep, maxsplit=1)[-1],
         })
         return self.render_to_response(ctxt)
 
@@ -354,6 +358,8 @@ class LassoView(FormView):
             'dataset_msg': '上5行を抜粋したデータセットを確認',
             'df_dataset': df_dataset[:5].to_html(classes='table', index=False, justify='left'),
             'reg_report': eval.reg_report(obj_var).T.to_html(classes='table', justify='left'),
+            'true_pred_jpg_path': eval.plot_true_pred(MEDIA_BASE_JPG_PATH).split(os.sep, maxsplit=1)[-1],
+            'residual_error_jpg_path': eval.plot_residual_error(MEDIA_BASE_JPG_PATH).split(os.sep, maxsplit=1)[-1],
         })
         return self.render_to_response(ctxt)
 
@@ -398,6 +404,8 @@ class RidgeView(FormView):
             'dataset_msg': '上5行を抜粋したデータセットを確認',
             'df_dataset': df_dataset[:5].to_html(classes='table', index=False, justify='left'),
             'reg_report': eval.reg_report(obj_var).T.to_html(classes='table', justify='left'),
+            'true_pred_jpg_path': eval.plot_true_pred(MEDIA_BASE_JPG_PATH).split(os.sep, maxsplit=1)[-1],
+            'residual_error_jpg_path': eval.plot_residual_error(MEDIA_BASE_JPG_PATH).split(os.sep, maxsplit=1)[-1],
         })
         return self.render_to_response(ctxt)
 
@@ -442,6 +450,8 @@ class SVRView(FormView):
             'dataset_msg': '上5行を抜粋したデータセットを確認',
             'df_dataset': df_dataset[:5].to_html(classes='table', index=False, justify='left'),
             'reg_report': eval.reg_report(obj_var).T.to_html(classes='table', justify='left'),
+            'true_pred_jpg_path': eval.plot_true_pred(MEDIA_BASE_JPG_PATH).split(os.sep, maxsplit=1)[-1],
+            'residual_error_jpg_path': eval.plot_residual_error(MEDIA_BASE_JPG_PATH).split(os.sep, maxsplit=1)[-1],
         })
         return self.render_to_response(ctxt)
 
@@ -485,6 +495,8 @@ class RandomForestRegressorView(FormView):
             'dataset_msg': '上5行を抜粋したデータセットを確認',
             'df_dataset': df_dataset[:5].to_html(classes='table', index=False, justify='left'),
             'reg_report': eval.reg_report(obj_var).T.to_html(classes='table', justify='left'),
+            'true_pred_jpg_path': eval.plot_true_pred(MEDIA_BASE_JPG_PATH).split(os.sep, maxsplit=1)[-1],
+            'residual_error_jpg_path': eval.plot_residual_error(MEDIA_BASE_JPG_PATH).split(os.sep, maxsplit=1)[-1],
         })
         return self.render_to_response(ctxt)
 

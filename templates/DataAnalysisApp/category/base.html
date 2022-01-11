@@ -98,6 +98,16 @@
       <div class="col-sm w-100">{{ reg_report | safe }}</div>
     </p>
     {% endif %}
+    {% if true_pred_jpg_path %}
+    <p>
+      <div class="col-sm w-100"><img class="img-fluid" src="{% static true_pred_jpg_path %}" alt="true_pred"></div>
+    </p>
+    {% endif %}
+    {% if residual_error_jpg_path %}
+    <p>
+      <div class="col-sm w-100"><img class="img-fluid" src="{% static residual_error_jpg_path %}" alt="residual_error"></div>
+    </p>
+    {% endif %}
     <!--DimensionalityReduction & clustering-->
     {% if data_jpg_path %}
     <p>
